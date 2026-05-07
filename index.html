@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="VantaStats is a fast, dark-mode custom lobby scoreboard for tracking scores, kills, and match winners."
+    />
+    <title>VantaStats | Aura Tracking Scoreboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Orbitron:wght@700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell" aria-labelledby="app-title">
+      <section class="hero" aria-label="Scoreboard overview">
+        <p class="eyebrow">Custom Lobby Command Center</p>
+        <div class="hero__content">
+          <div>
+            <h1 id="app-title">VantaStats</h1>
+            <p class="hero__copy">
+              Built for the sweats: instant score, kill, and winner tracking for
+              every clutch custom lobby.
+            </p>
+          </div>
+          <div class="match-point-card" aria-label="Match point controls">
+            <label for="match-point">Match point</label>
+            <input id="match-point" type="number" min="1" max="99" value="16" />
+          </div>
+        </div>
+      </section>
+
+      <section class="scoreboard" aria-label="Team score cards">
+        <article class="team-card team-card--alpha" data-team="alpha">
+          <div class="team-card__header">
+            <button class="team-name" type="button" data-action="rename" aria-label="Rename Team Alpha">
+              Team Alpha
+            </button>
+            <span class="team-tag">Emerald side</span>
+          </div>
+
+          <div class="stat-display" aria-live="polite">
+            <span class="stat-display__label">Score</span>
+            <strong class="stat-display__value" data-stat="score">0</strong>
+          </div>
+
+          <div class="controls" aria-label="Team Alpha score controls">
+            <button class="control-button" type="button" data-action="score-down">−</button>
+            <button class="control-button control-button--primary" type="button" data-action="score-up">+</button>
+          </div>
+
+          <div class="kills-panel">
+            <div>
+              <span class="kills-panel__label">Kills</span>
+              <strong data-stat="kills">0</strong>
+            </div>
+            <div class="mini-controls" aria-label="Team Alpha kill controls">
+              <button class="mini-button" type="button" data-action="kills-down">−</button>
+              <button class="mini-button" type="button" data-action="kills-up">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="team-card team-card--omega" data-team="omega">
+          <div class="team-card__header">
+            <button class="team-name" type="button" data-action="rename" aria-label="Rename Team Omega">
+              Team Omega
+            </button>
+            <span class="team-tag">Violet side</span>
+          </div>
+
+          <div class="stat-display" aria-live="polite">
+            <span class="stat-display__label">Score</span>
+            <strong class="stat-display__value" data-stat="score">0</strong>
+          </div>
+
+          <div class="controls" aria-label="Team Omega score controls">
+            <button class="control-button" type="button" data-action="score-down">−</button>
+            <button class="control-button control-button--primary" type="button" data-action="score-up">+</button>
+          </div>
+
+          <div class="kills-panel">
+            <div>
+              <span class="kills-panel__label">Kills</span>
+              <strong data-stat="kills">0</strong>
+            </div>
+            <div class="mini-controls" aria-label="Team Omega kill controls">
+              <button class="mini-button" type="button" data-action="kills-down">−</button>
+              <button class="mini-button" type="button" data-action="kills-up">+</button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="bottom-bar" aria-label="Round controls">
+        <div class="status-card">
+          <span>Leader</span>
+          <strong id="leader-text">Dead even</strong>
+        </div>
+        <button id="reset-button" class="reset-button" type="button">Nuclear Reset</button>
+      </section>
+    </main>
+
+    <dialog id="winner-dialog" class="winner-dialog" aria-labelledby="winner-title">
+      <div class="winner-dialog__content">
+        <p class="eyebrow">Winner locked</p>
+        <h2 id="winner-title">Team Alpha takes the dub</h2>
+        <p id="winner-summary">Match point reached. Queue the highlight reel.</p>
+        <button id="close-winner" class="reset-button reset-button--compact" type="button">
+          Run it back
+        </button>
+      </div>
+    </dialog>
+  </body>
+</html>
